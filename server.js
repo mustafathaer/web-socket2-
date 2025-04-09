@@ -1,4 +1,3 @@
-// server.js
 const WebSocket = require('ws');
 const express = require('express');
 
@@ -10,11 +9,12 @@ app.get('/', (req, res) => {
   res.send('Tank Camera Server');
 });
 
+// Create the HTTP server (no need to listen separately for WebSocket)
 const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-// WebSocket Server
+// WebSocket Server: This will work with the same HTTP server
 const wss = new WebSocket.Server({ server });
 
 wss.on('connection', (ws) => {
